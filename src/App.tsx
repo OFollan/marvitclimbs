@@ -7,7 +7,9 @@ import FooComponent from "./FooComponent";
 import { StyledFirebaseAuth } from "react-firebaseui";
 
 function App() {
-  const [user, setSignedInUser] = React.useState<firebase.User | null>();
+  const [user, setSignedInUser] = React.useState<
+    firebase.User | null | undefined
+  >();
   React.useEffect(() => {
     return firebase.auth().onAuthStateChanged((user) => setSignedInUser(user));
   }, []);
@@ -34,9 +36,17 @@ function App() {
       measurementId: "G-Y7DWQWF9DC",
     });
   }
+  if (user === undefined) {
+    return <div>Laster...</div>;
+  }
   if (!user) {
     return (
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <div className="App-login">
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </div>
     );
   }
 
