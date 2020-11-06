@@ -3,6 +3,7 @@ import "./App.css";
 import firebase from "firebase";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/analytics";
 import { StyledFirebaseAuth } from "react-firebaseui";
 
 function App() {
