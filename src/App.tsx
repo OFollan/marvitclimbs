@@ -3,7 +3,6 @@ import "./App.css";
 import firebase from "firebase";
 import "firebase/firestore";
 import "firebase/auth";
-import FooComponent from "./FooComponent";
 import { StyledFirebaseAuth } from "react-firebaseui";
 
 function App() {
@@ -62,7 +61,6 @@ function App() {
 
   return (
     <div className="App">
-      <FooComponent />
       <header className="App-header">Funker github actions???</header>
     </div>
   );
