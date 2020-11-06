@@ -35,6 +35,7 @@ function App() {
       appId: "1:327503153719:web:c5d8becfec99740036cdb2",
       measurementId: "G-Y7DWQWF9DC",
     });
+    firebase.analytics();
   }
   if (user === undefined) {
     return <div>Laster...</div>;
