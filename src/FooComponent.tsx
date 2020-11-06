@@ -10,7 +10,9 @@ const FooComponent: FunctionComponent = () => {
     });
   };
 
-  return <button onClick={async () => await addSomething}>Trykk på meg</button>;
+  return (
+    <button onClick={async () => await addSomething()}>Trykk på meg</button>
+  );
 };
 
 export default FooComponent;
