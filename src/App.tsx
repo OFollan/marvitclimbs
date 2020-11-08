@@ -5,7 +5,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/analytics";
 import { StyledFirebaseAuth } from "react-firebaseui";
-import ClimbsList from "./ClimbsList";
+import SessionList from "./SessionList";
 import { ThemeProvider } from "@chakra-ui/core";
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <ClimbsList />
+        <SessionList />
       </div>
     </ThemeProvider>
   );
