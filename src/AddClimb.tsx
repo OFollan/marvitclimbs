@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from "react";
 import {
   Box,
+  Flex,
   FormControl,
   FormLabel,
+  Image,
   Radio,
   RadioGroup,
   Slider,
@@ -10,7 +12,7 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@chakra-ui/core";
-import { ToClimbingGrade, ToClimbingGradeColor } from "./utils";
+import { ToClimbingGrade, ToClimbingGradeColor, ToOndraFace } from "./utils";
 
 type Props = {
   sliderValue: number;
@@ -25,14 +27,24 @@ const AddClimb: FunctionComponent<Props> = ({
 
   return (
     <>
-      <FormControl mt={4}>
-        <FormLabel>Type scend</FormLabel>
-        <RadioGroup onChange={(e) => setValue(e.target.value)} value={value}>
-          <Radio value="1">Bulder</Radio>
-          <Radio value="2">Topptau</Radio>
-          <Radio value="3">Led</Radio>
-        </RadioGroup>
-      </FormControl>
+      <Flex mt={4} size="XXL">
+        <Flex align="flex-end">
+          <FormControl>
+            <FormLabel>Type scend</FormLabel>
+            <RadioGroup
+              onChange={(e) => setValue(e.target.value)}
+              value={value}
+            >
+              <Radio value="1">Bulder</Radio>
+              <Radio value="2">Topptau</Radio>
+              <Radio value="3">Led</Radio>
+            </RadioGroup>
+          </FormControl>
+        </Flex>
+        <Flex maxW="sm" maxH="sm" rounded="lg" overflow="hidden">
+          <Image src={ToOndraFace(sliderValue)} />
+        </Flex>
+      </Flex>
       <FormControl mt={4}>
         <Slider onChange={(val) => updateSliderValue(val)} value={sliderValue}>
           <SliderTrack />

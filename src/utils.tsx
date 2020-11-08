@@ -30,3 +30,13 @@ export const ToClimbingGrade = (sliderVal: number) => {
       return "jæææævli hardt";
   }
 };
+export const ToOndraFace = (sliderVal: number) => {
+  switch (true) {
+    case sliderVal < 60:
+      return "ondraChillFace.png";
+    case sliderVal < 80:
+      return "ondraCruxFace.png";
+    default:
+      return "ondraCruxCruxFace.png";
+  }
+};
