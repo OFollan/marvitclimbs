@@ -5,7 +5,8 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/analytics";
 import { StyledFirebaseAuth } from "react-firebaseui";
-import FooComponent from "./FooComponent";
+import ClimbsList from "./ClimbsList";
+import { ThemeProvider } from "@chakra-ui/core";
 
 function App() {
   const [user, setSignedInUser] = React.useState<
@@ -57,16 +58,16 @@ function App() {
     await firebase.auth().signOut();
     setSignedInUser(null);
   };
-  console.log(user);
   if (!user?.emailVerified) {
     foo().then();
   }
 
   return (
-    <div className="App">
-      <FooComponent />
-      <header className="App-header">Funker github actions???</header>
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <ClimbsList />
+      </div>
+    </ThemeProvider>
   );
 }
 
