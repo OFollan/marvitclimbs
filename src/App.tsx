@@ -5,6 +5,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/analytics";
 import { StyledFirebaseAuth } from "react-firebaseui";
+import FooComponent from "./FooComponent";
 
 function App() {
   const [user, setSignedInUser] = React.useState<
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <div className="App">
+      <FooComponent />
       <header className="App-header">Funker github actions???</header>
     </div>
   );
