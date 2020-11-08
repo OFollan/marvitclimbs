@@ -13,11 +13,14 @@ import {
 import { ToClimbingGrade, ToClimbingGradeColor } from "./utils";
 
 type Props = {
-  a_sliderValue: number;
+  sliderValue: number;
+  updateSliderValue: (value: number) => void;
 };
 
-const AddClimb: FunctionComponent<Props> = ({ a_sliderValue }) => {
-  const [sliderValue, setSliderValue] = React.useState(a_sliderValue);
+const AddClimb: FunctionComponent<Props> = ({
+  sliderValue,
+  updateSliderValue,
+}) => {
   const [value, setValue] = React.useState("1");
 
   return (
@@ -31,7 +34,7 @@ const AddClimb: FunctionComponent<Props> = ({ a_sliderValue }) => {
         </RadioGroup>
       </FormControl>
       <FormControl mt={4}>
-        <Slider onChange={(val) => setSliderValue(val)} value={sliderValue}>
+        <Slider onChange={(val) => updateSliderValue(val)} value={sliderValue}>
           <SliderTrack />
           <SliderFilledTrack />
           <SliderThumb>

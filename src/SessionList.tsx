@@ -9,6 +9,7 @@ const SessionList: FunctionComponent = () => {
   const user = firebase.auth().currentUser;
   const db = firebase.firestore();
   const [sessions, setSessions] = React.useState<Array<SessionType>>([]);
+  const [updated, setUpdated] = React.useState<Date | null>();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -23,11 +24,11 @@ const SessionList: FunctionComponent = () => {
       setSessions(sessions);
     };
     fetchData();
-  }, [db, user]);
+  }, [db, user, updated]);
 
   return (
     <>
-      <AddSession />
+      <AddSession setUpdated={setUpdated} />
       <SimpleGrid columns={[1, 1]} spacing="40px">
         {sessions.map((session) => (
           <Session session={session} />

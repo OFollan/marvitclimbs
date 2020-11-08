@@ -14,11 +14,18 @@ import { ToClimbingGrade } from "./utils";
 import firebase from "firebase";
 import AddClimb from "./AddClimb";
 
-type Props = {};
+type Props = {
+  setUpdated: (date: Date) => void;
+};
 
-const AddSession: FunctionComponent<Props> = () => {
+const AddSession: FunctionComponent<Props> = ({ setUpdated }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [sliderValues, setSliderValues] = React.useState([30]);
+
+  const UpdateSliderValue = (index: number, val: number): void => {
+    const newSliderValues = sliderValues.map((v, i) => (i === index ? val : v));
+    setSliderValues(newSliderValues);
+  };
 
   const AddScend = () => {
     setSliderValues([...sliderValues, 30]);
@@ -34,6 +41,7 @@ const AddSession: FunctionComponent<Props> = () => {
       userId: user?.uid,
     });
     onClose();
+    setUpdated(new Date(Date.now()));
   };
 
   return (
@@ -45,8 +53,13 @@ const AddSession: FunctionComponent<Props> = () => {
           <ModalHeader>Legg til klatreøkt</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {sliderValues.map((value) => (
-              <AddClimb a_sliderValue={value} />
+            {sliderValues.map((value, index) => (
+              <AddClimb
+                sliderValue={value}
+                updateSliderValue={(hereremin) =>
+                  UpdateSliderValue(index, hereremin)
+                }
+              />
             ))}
             <Button onClick={AddScend}>Legg til scend</Button>
           </ModalBody>
